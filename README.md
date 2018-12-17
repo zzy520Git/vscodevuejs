@@ -1,2 +1,11 @@
 # vscodevuejs
 vscode笔记
+
+0.先建立远程仓库vsrep.git
+1.再新建本地仓库
+2.全部加入暂存区
+3.终端输入git remote add origin https://github.com/zzy520Git/vsrep.git
+4.拉取git pull --rebase origin master
+5.推git push -u origin master
+6.点击拉取按钮
+7.先点击勾选，然后输入提交描述信息，然后push即可（注意先保存）
