@@ -8,11 +8,10 @@
     <script type="text/javascript" src="../assets/js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="../assets/js/moment/moment.js"></script>
     <script type="text/javascript" src="../assets/js/vue/vue.min.js"></script>
-    <script type="text/javascript" src="../assets/js/vue/vue-resource.min.js"></script>
 </head>
 <body>
 <div id="box">
-
+    <button @click="show($event)" class="btn btn-primary">点击event</button>
 </div>
 
 <div>TODO首页</div>
@@ -22,6 +21,10 @@
         data: {
         },
         methods: {
+            show(event) {
+                //console.log(111);
+                console.log(event);
+            }
         }
     });
 </script>
