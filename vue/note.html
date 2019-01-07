@@ -10,6 +10,8 @@ v-once
 
 .capture    捕获模式
 .self       源是本身触发
+.once       只触发一次
+v-on:click.native   组建自定义事件和原生事件
 keyup.enter=""
 keyup.up=""
 keyup.down=""
@@ -19,3 +21,23 @@ v-cloak
 [v-cloak]{
     display:none;
 }
+
+this.$http
+Vue.http
+
+this.$http
+.get('/api/list?pageNo=' + transition.to.params.page);
+.then(function(rep){
+// 成功回调函数
+transition.next({
+list : rep.data
+});
+}, function(rep) {
+// 失败回调函数
+transition.next({
+data : rep.data
+});
+});
+
+Vue.http.interceptors.push(function(request, next) {
+    拦截器
