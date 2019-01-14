@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>emit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <template id="comp">
+        <button @click="enlarge">字体变大</button>
+    </template>
+    <div id="box" @enlarge="at">
+        <div :style="{fontSize: fsize+'px'}">查看字体</div>
+        <!-- 只能在这监听子组件事件 -->
+        <todo-item @enlarge="mkBig"></todo-item>
+        <!-- 推荐使用@abc-bcd这种形式的事件名，而不要用驼峰 -->
+
+        <div @enlarge="at"></div>
+    </div>
+    <script>
+        //声明一个组件
+        Vue.component('todo-item', {
+            template: '#comp',
+            data() {
+                return {
+                    fz: 1
+                }
+            },
+            methods: {
+                enlarge() {
+                    this.$emit("enlarge", 1);
+                }
+            }
+        });
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                fsize: 15
+            },
+            methods: {
+                mkBig(size) {
+                    this.fsize += size;
+                },
+                at(size) {
+                    //不会起作用
+                    alert(size);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

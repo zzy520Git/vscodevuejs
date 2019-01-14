@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>v-on</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="box" @click="test">
+        <p>#{{ message }}#</p>
+        <!-- 阻止冒泡 -->
+        <button v-on:click.stop="reverseMessage">逆转消息</button>
+        <!-- 阻止默认行为 -->
+        <button @click.prevent="reverseMessage">逆转消息</button>
+        <!-- 去掉首尾空格 -->
+        <input type="text" v-model.trim="message"/>
+
+        <!-- 阻止单击事件继续传播 -->
+        <a v-on:click.stop="reverseMessage">aaaaaa</a>
+        <!-- 提交事件不再重载页面 -->
+        <form v-on:submit.prevent="reverseMessage">aaaaffffff</form>
+
+        <!-- 修饰符可以串联 -->
+        <a v-on:click.stop.prevent="reverseMessage">aaaa</a>
+
+        <!-- 只有修饰符 -->
+        <form v-on:submit.prevent></form>
+
+        <!-- 添加事件监听器时使用事件捕获模式 -->
+        <!-- 即元素自身触发的事件先在此处理，然后才交由内部元素进行处理 -->
+        <div v-on:click.capture="reverseMessage">...</div>
+
+        <!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+        <!-- 即事件不是从内部元素触发的 -->
+        <div v-on:click.self="reverseMessage">...</div>
+
+        <!-- 缩写语法 -->
+        <input @keyup.enter="reverseMessage">
+        <!-- up,down,left,right -->
+        <!-- Vue.config.keyCodes.f1 = 112 -->
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                message: 'Hello Vue.js!'
+            },
+            methods: {
+                reverseMessage: function () {
+                    this.message = this.message.split('').reverse().join('')
+                },
+                test() {
+                    alert(1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

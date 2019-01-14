@@ -13,6 +13,7 @@
     </template>
     <div id="box">
         <ol>
+            <!-- 在组件中使用v-for必须使用:key属性 -->
             <todo-item v-for="item in groceryList"
                 v-bind:todo="item" :id="item.id"
                 v-bind:key="item.id"></todo-item>
@@ -22,6 +23,16 @@
         //声明一个组件
         Vue.component('todo-item', {
             props: ['todo', "id"],
+            /**也可以是对象，限制类型,可以有多个类型，可以有默认值
+            props: {
+                todo: Object,
+                id: [Number, String]
+                ps: {
+                    type: Number,
+                    default: 100
+                }
+            }
+            */
             template: '#comp'
         });
         var vm = new Vue({

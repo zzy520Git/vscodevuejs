@@ -11,7 +11,8 @@
     <div id="box">
         <p>{{ message }}</p>
         <button v-on:click="reverseMessage">逆转消息</button>
-        <button @click="reverseMessage">简写逆转消息</button>
+        <button @click="reverseMessage">简写@逆转消息</button>
+        <button @click="pushalt('zzy', $event)">$event</button>
     </div>
     <script>
         var vm = new Vue({
@@ -22,6 +23,12 @@
             methods: {
                 reverseMessage: function () {
                     this.message = this.message.split('').reverse().join('')
+                },
+                pushalt(str, ev) {
+                    alert(str);
+                    if(ev) {
+                        alert(event.target.tagName);
+                    }
                 }
             }
         });

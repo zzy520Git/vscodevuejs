@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>简单组件</title>
+    <title>简单组件slot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="../vue.js"></script>
 </head>
@@ -12,10 +12,22 @@
         <div>
             <span>我是一个组件1</span>
             <span>{{msg}}</span>
+            <slot>默认插槽文本</slot>
+            <p>分隔符---</p>
+            <slot name="footer">命名插槽</slot>
         </div>
     </template>
     <div id="box">
+        <todo-item>插槽来了</todo-item>
         <todo-item></todo-item>
+        <todo-item>
+            header
+            <p>p标签</p>
+            <template slot="footer">
+                <h1>h1</h1>
+                hello
+            </template>
+        </todo-item>
         <my-item></my-item>
     </div>
     <script>

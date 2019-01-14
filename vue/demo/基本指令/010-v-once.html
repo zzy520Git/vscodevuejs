@@ -3,22 +3,24 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>v-show</title>
+    <title>v-once</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="../vue.js"></script>
 </head>
 <body>
     <div id="box">
-        <!-- 对于不太需要经常变化的if条件，建议使用，如果需要经常变化，可用v-show -->
-        <label for="r1">修改可见</label><input type="checkbox" v-model="seen" id="r1">
-        <br><br>
-        <p v-show="seen">现在你看到我了</p>
+        <div><span>这个将会改变: {{ msg }}</span></div>
+        <div><span v-once>这个将不会改变: {{ msg }}</span></div>
+        <div><span v-text="msg" v-once></span></div>
+        <div><textarea v-model="msg"></textarea></div>
     </div>
     <script>
         var vm = new Vue({
             el: "#box",
             data: {
-                seen:true
+                msg: 'Hello Vue.js!'
+            },
+            methods: {
             }
         });
     </script>

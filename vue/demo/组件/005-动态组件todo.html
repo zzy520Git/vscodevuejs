@@ -15,6 +15,13 @@
         </div>
     </template>
     <div id="box">
+        <!-- keep-alive用于缓存用户行为
+            注意这个 <keep-alive> 要求被切换到的组件都有自己的名字，
+            不论是通过组件的 name 选项还是局部/全局注册。 -->
+        <keep-alive>
+            <component v-bind:is="currentTabComponent"></component>
+        </keep-alive>
+        
         <todo-item></todo-item>
         <my-item></my-item>
     </div>

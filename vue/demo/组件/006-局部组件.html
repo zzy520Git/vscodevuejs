@@ -16,27 +16,20 @@
     </template>
     <div id="box">
         <todo-item></todo-item>
-        <my-item></my-item>
     </div>
     <script>
-        //声明一个组件
-        Vue.component('todo-item', {
+        var TodoItem = {
             template: '#comp',
             data() {
                 return {
                     msg: "子组件属性"
                 }
             }
-        });
-        Vue.component('my-item', {
-            template: '<p>我是组件2</p>'
-        });
+        }
         var vm = new Vue({
             el: "#box",
-            data: {
-                message: 'Hello Vue.js!'
-            },
-            methods: {
+            components: {
+                'todo-item': TodoItem
             }
         });
     </script>
