@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>简单组件</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <template id="comp">
+        <div>
+            <span>我是一个组件1</span>
+        </div>
+    </template>
+    <div id="box">
+        <todo-item></todo-item>
+        <my-item></my-item>
+    </div>
+    <script>
+        //声明一个组件
+        Vue.component('todo-item', {
+            template: '#comp'
+        });
+        Vue.component('my-item', {
+            template: '<p>我是组件2</p>'
+        });
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                message: 'Hello Vue.js!'
+            },
+            methods: {
+            }
+        });
+    </script>
+</body>
+</html>
